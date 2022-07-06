@@ -1,12 +1,13 @@
 import os
 import torch
+from typing import Optional
 from tqdm import tqdm
 from loguru import logger
 from torch.utils.data import Dataset
 
 
 class BilingualDataset(Dataset):
-    def __init__(self, src_file: str = None, tgt_file: str = None, tokenizer = None, max_len: int = 256):
+    def __init__(self, src_file: Optional[str] = None, tgt_file: Optional[str] = None, tokenizer = None, max_len: int = 256):
         super(BilingualDataset, self).__init__()
         
         self.src_file = src_file

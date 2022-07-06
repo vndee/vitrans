@@ -1,0 +1,13 @@
+python train.py \
+	  --model_name_or_path facebook/mbart-large-50-one-to-many-mmt \
+    --do_train \
+    --do_eval \
+    --source_lang en \
+    --target_lang vi \
+    --dataset_name data/dev/data.json \
+    --dataset_config_name en-vi \
+    --output_dir /tmp/tst-translation \
+    --per_device_train_batch_size=4 \
+    --per_device_eval_batch_size=4 \
+    --overwrite_output_dir \
+    --predict_with_generate
