@@ -560,6 +560,7 @@ def main():
         eval_dataset=eval_dataset if training_args.do_eval else None,
         tokenizer=tokenizer,
         data_collator=data_collator,
+        save_total_limit=2,
         compute_metrics=compute_metrics if training_args.predict_with_generate else None,
     )
 

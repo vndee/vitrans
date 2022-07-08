@@ -1,12 +1,14 @@
 python train.py \
     --model_name_or_path facebook/mbart-large-50-one-to-many-mmt \
     --do_train \
+    --do_eval \
     --source_lang en \
     --target_lang vi \
     --train_file data/kaggle/train.json \
     --test_file data/kaggle/test.json \
+    --validation_file data/kaggle/val.json \
     --output_dir ./output/tst-translation \
-    --per_device_train_batch_size=4 \
-    --per_device_eval_batch_size=4 \
+    --per_device_train_batch_size=32 \
+    --per_device_eval_batch_size=32 \
     --overwrite_output_dir \
     --predict_with_generate
