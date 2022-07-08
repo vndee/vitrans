@@ -51,7 +51,7 @@ from transformers.utils.versions import require_version
 
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
-# check_min_version("4.21.0.dev0")
+check_min_version("4.21.0.dev0")
 
 require_version("datasets>=1.8.0", "To fix: pip install -r examples/pytorch/translation/requirements.txt")
 
@@ -329,7 +329,8 @@ def main():
         raw_datasets = load_dataset(
             data_args.dataset_name,
             data_args.dataset_config_name,
-            cache_dir=model_args.cache_dir
+            cache_dir=model_args.cache_dir,
+            use_auth_token=True if model_args.use_auth_token else None,
         )
     else:
         data_files = {}
@@ -346,6 +347,7 @@ def main():
             extension,
             data_files=data_files,
             cache_dir=model_args.cache_dir,
+            use_auth_token=True if model_args.use_auth_token else None,
         )
     # See more about loading any type of standard or custom dataset (from files, python dict, pandas DataFrame, etc) at
     # https://huggingface.co/docs/datasets/loading_datasets.html.
@@ -652,4 +654,3 @@ def _mp_fn(index):
 
 if __name__ == "__main__":
     main()
-

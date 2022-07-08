@@ -1,5 +1,5 @@
-python run_translation.py \
-    --model_name_or_path Helsinki-NLP/opus-mt-en-ro \
+python train.py \
+    --model_name_or_path facebook/mbart-large-50-one-to-many-mmt \
     --do_train \
     --source_lang en \
     --target_lang vi \
