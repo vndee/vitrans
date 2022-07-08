@@ -1,12 +1,11 @@
-python train.py \
-	  --model_name_or_path facebook/mbart-large-50-one-to-many-mmt \
+python run_translation.py \
+    --model_name_or_path Helsinki-NLP/opus-mt-en-ro \
     --do_train \
-    --do_eval \
     --source_lang en \
     --target_lang vi \
-    --dataset_name data/dev/data.json \
-    --dataset_config_name en-vi \
-    --output_dir /tmp/tst-translation \
+    --train_file data/kaggle/train.json \
+    --test_file data/kaggle/test.json \
+    --output_dir ./output/tst-translation \
     --per_device_train_batch_size=4 \
     --per_device_eval_batch_size=4 \
     --overwrite_output_dir \
