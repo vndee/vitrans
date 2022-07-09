@@ -49,9 +49,8 @@ from transformers.trainer_utils import get_last_checkpoint
 from transformers.utils import check_min_version, send_example_telemetry
 from transformers.utils.versions import require_version
 
-
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
-check_min_version("4.21.0.dev0")
+# check_min_version("4.21.0.dev0")
 
 require_version("datasets>=1.8.0", "To fix: pip install -r examples/pytorch/translation/requirements.txt")
 
@@ -553,6 +552,8 @@ def main():
         return result
 
     # Initialize our Trainer
+    training_args.num_train_epochs = 15
+
     trainer = Seq2SeqTrainer(
         model=model,
         args=training_args,
@@ -560,7 +561,6 @@ def main():
         eval_dataset=eval_dataset if training_args.do_eval else None,
         tokenizer=tokenizer,
         data_collator=data_collator,
-        save_total_limit=2,
         compute_metrics=compute_metrics if training_args.predict_with_generate else None,
     )
 
