@@ -2,6 +2,7 @@ python train.py \
     --model_name_or_path facebook/mbart-large-50-one-to-many-mmt \
     --do_train \
     --do_eval \
+	--do_predict \
     --source_lang en \
     --target_lang vi \
     --train_file data/kaggle/train.json \
