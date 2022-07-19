@@ -26,7 +26,7 @@ def export(X, y, file_path):
 if __name__ == "__main__":
     f_src = open("data/en_sents", "r")
     f_tgt = open("data/vi_sents", "r")
-    print(string.punctuation)
+
     src_lines, tgt_lines = f_src.readlines(), f_tgt.readlines()
     f_src.close()
     f_tgt.close()
