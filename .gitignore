@@ -5,6 +5,7 @@ __pycache__/
 *$py.class
 #.idea/
 weights/
+.idea/
 
 venv/
 # C extensions
