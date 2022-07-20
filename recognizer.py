@@ -1,3 +1,4 @@
+import gc
 import torch
 import soundfile as sf
 
@@ -24,9 +25,10 @@ class VietnameseSpeechRecognizer(SpeechRecognizer):
         predicted_ids = torch.argmax(logits, dim=-1)
         transcription = self.processor.batch_decode(predicted_ids)
 
+        gc.collect()
         return transcription[0]
 
 
-if __name__ == "__main__":
-    worker = SpeechRecognizer()
-    print(worker("data/001.wav"))
+# if __name__ == "__main__":
+#     worker = VietnameseSpeechRecognizer()
+#     print(worker("data/001.wav"))
