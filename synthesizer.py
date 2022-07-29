@@ -1,6 +1,7 @@
 import gc
 import torch
 import torchaudio
+import sounddevice
 
 from typing import Optional
 from fairseq.checkpoint_utils import load_model_ensemble_and_task_from_hf_hub
@@ -43,7 +44,10 @@ class EnglishSpeechSynthesizer(SpeechSynthesizer):
             return wav.unsqueeze(0), rate
 
 
-# if __name__ == "__main__":
-#     worker = EnglishSpeechSynthesizer()
-#     wav, rate = worker("That morning I saw you crying")
-#     torchaudio.save("data/example_out_003.wav", wav, rate)
+if __name__ == "__main__":
+    worker = EnglishSpeechSynthesizer()
+    wav, rate = worker("That morning I saw you crying")
+    print(wav.numpy().shape, rate)
+    sounddevice.play(wav.numpy().T, samplerate=rate)
+    sounddevice.wait()
+    torchaudio.save("data/example_out_003.wav", wav, rate)

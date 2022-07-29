@@ -18,7 +18,6 @@ class VietnameseSpeechRecognizer(SpeechRecognizer):
 
     def __call__(self, x: str):
         speech, _ = sf.read(x)
-
         input_values = self.processor(speech, return_tensors="pt", padding="longest").input_values
         logits = self.ctc_decoder(input_values).logits
 
@@ -29,6 +28,6 @@ class VietnameseSpeechRecognizer(SpeechRecognizer):
         return transcription[0]
 
 
-# if __name__ == "__main__":
-#     worker = VietnameseSpeechRecognizer()
-#     print(worker("data/001.wav"))
+#if __name__ == "__main__":
+#    worker = VietnameseSpeechRecognizer()
+#    print(worker("data/001.wav"))
